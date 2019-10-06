@@ -567,9 +567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77228dae94a8cfc42a55973f9377e242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldSize: {x: 7, y: 4}
+  worldSize: {x: 7, y: 5}
   tilePrefab: {fileID: 5702395845745189004, guid: 90cbbb866e4bc124a8262fa6961a101e,
     type: 3}
+  scoreText: {fileID: 684310093}
 --- !u!4 &2056662321
 Transform:
   m_ObjectHideFlags: 0

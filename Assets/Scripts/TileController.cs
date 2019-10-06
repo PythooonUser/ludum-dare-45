@@ -7,6 +7,7 @@ public class TileController : MonoBehaviour
 {
     public Vector2Int coordinates;
     public Action<Vector2Int> OnTileInteracted = delegate { };
+    public Action OnScoreGenerated = delegate { };
     public Color colorDirt;
     public Color colorGrass;
     public GameObject tileGraphics;
@@ -15,10 +16,20 @@ public class TileController : MonoBehaviour
     public enum TileState { Empty, Plus, Tile }
     public TileState tileState;
 
+    private Coroutine scoreRoutine;
+
     private void Start()
     {
-        tileState = (TileState)UnityEngine.Random.Range(0, 3);
         UpdateState();
+    }
+
+    IEnumerator GenerateScore()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(UnityEngine.Random.Range(1, 4));
+            OnScoreGenerated();
+        }
     }
 
     private void UpdateState()
@@ -27,16 +38,28 @@ public class TileController : MonoBehaviour
         {
             tileGraphics.SetActive(false);
             plusGraphics.SetActive(false);
+
+            if (scoreRoutine != null)
+            {
+                StopCoroutine(scoreRoutine);
+            }
         }
         else if (tileState == TileState.Plus)
         {
             tileGraphics.SetActive(false);
             plusGraphics.SetActive(true);
+
+            if (scoreRoutine != null)
+            {
+                StopCoroutine(scoreRoutine);
+            }
         }
         else if (tileState == TileState.Tile)
         {
             tileGraphics.SetActive(true);
             plusGraphics.SetActive(false);
+
+            scoreRoutine = StartCoroutine(GenerateScore());
         }
         else
         {
@@ -44,8 +67,14 @@ public class TileController : MonoBehaviour
         }
     }
 
-    private void OnMouseEnter()
+    private void OnMouseDown()
     {
         OnTileInteracted(coordinates);
+
+        if (tileState == TileState.Plus)
+        {
+            tileState = TileState.Tile;
+            UpdateState();
+        }
     }
 }
