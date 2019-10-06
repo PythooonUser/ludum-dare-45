@@ -24,7 +24,14 @@ public class WorldManager : MonoBehaviour
             {
                 Vector3 tilePosition = new Vector3(x - halfWidth, 0f, y - halfHeight);
                 TileController tileController = Instantiate(tilePrefab, tilePosition, Quaternion.identity, transform);
+                tileController.coordinates = new Vector2Int(x, y);
+                tileController.OnTileInteracted += OnTileInteraction;
             }
         }
+    }
+
+    private void OnTileInteraction(Vector2Int coordinates)
+    {
+        Debug.Log("Interaction: " + coordinates.ToString());
     }
 }
