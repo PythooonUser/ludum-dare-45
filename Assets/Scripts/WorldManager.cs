@@ -6,13 +6,33 @@ using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour
 {
+    [Header("World Parameters")]
     public Vector2Int worldSize;
     public TileController tilePrefab;
+
+    [Header("UI References")]
     public Text scoreText;
+
+    [Header("Gameplay Settings")]
     public float startDelay = 1.5f;
 
     private int score;
     private Dictionary<Vector2Int, TileController> tiles;
+
+    [HideInInspector]
+    public static WorldManager Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("WorldManager already instantiated!");
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {
