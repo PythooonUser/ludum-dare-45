@@ -8,3 +8,7 @@ Library
 Logs
 obj
 Temp
+
+## Blender generated files and folders
+*.blend1
+*.blend1.meta
