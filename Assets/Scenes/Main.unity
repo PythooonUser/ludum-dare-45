@@ -571,6 +571,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 5702395845745189004, guid: 90cbbb866e4bc124a8262fa6961a101e,
     type: 3}
   scoreText: {fileID: 684310093}
+  startDelay: 1.5
 --- !u!4 &2056662321
 Transform:
   m_ObjectHideFlags: 0
