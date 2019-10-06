@@ -14,8 +14,9 @@ public class TileController : MonoBehaviour
     public GameObject plusGraphics;
     public GameObject treeGraphics;
 
-    public enum TileState { Empty, Plus, Tile }
+    public enum TileState { Empty, Plus, DirtTile, GrassTile }
     public TileState tileState;
+    private bool hasTree = false;
 
     private Coroutine scoreRoutine;
 
@@ -57,13 +58,22 @@ public class TileController : MonoBehaviour
             }
             treeGraphics.SetActive(false);
         }
-        else if (tileState == TileState.Tile)
+        else if ((int)tileState >= 2)
         {
             tileGraphics.SetActive(true);
             plusGraphics.SetActive(false);
 
+            if (tileState == TileState.DirtTile)
+            {
+                tileGraphics.GetComponent<Renderer>().material.color = colorDirt;
+            }
+            else if (tileState == TileState.GrassTile)
+            {
+                tileGraphics.GetComponent<Renderer>().material.color = colorGrass;
+            }
+
             // scoreRoutine = StartCoroutine(GenerateScore());
-            treeGraphics.SetActive(true);
+            // treeGraphics.SetActive(true);
         }
         else
         {
@@ -73,12 +83,19 @@ public class TileController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        OnTileInteracted(this);
+        if (tileState == TileState.DirtTile)
+        {
+            tileState = TileState.GrassTile;
+            UpdateState();
+            treeGraphics.SetActive(true);
+        }
 
         // if (tileState == TileState.Plus)
         // {
         //     tileState = TileState.Tile;
         //     UpdateState();
         // }
+
+        OnTileInteracted(this);
     }
 }

@@ -62,9 +62,9 @@ public class WorldManager : MonoBehaviour
     {
         TileController tileController = tiles[coordinates];
 
-        if (tileController.tileState != TileController.TileState.Tile)
+        if ((int)tileController.tileState < 2)
         {
-            tileController.tileState = TileController.TileState.Tile;
+            tileController.tileState = TileController.TileState.DirtTile;
             tileController.UpdateState();
             SpawnNeighbors(tileController);
         }
@@ -72,11 +72,6 @@ public class WorldManager : MonoBehaviour
 
     private void SpawnNeighbors(TileController tileController)
     {
-        if (tileController.tileState != TileController.TileState.Tile)
-        {
-            return;
-        }
-
         SpawnNeighbor(GetNeighborTop(tileController.coordinates));
         SpawnNeighbor(GetNeighborRight(tileController.coordinates));
         SpawnNeighbor(GetNeighborBottom(tileController.coordinates));
