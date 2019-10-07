@@ -4,6 +4,7 @@
 ## Unity generated files and folders
 *.csproj
 *.sln
+Builds
 Library
 Logs
 obj
