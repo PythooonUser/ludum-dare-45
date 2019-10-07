@@ -480,7 +480,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.09411765, g: 0.101960786, b: 0.11372549, a: 0}
+  m_BackGroundColor: {r: 0.23099858, g: 0.2480331, b: 0.2735849, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 2056662321}
   - component: {fileID: 2056662320}
   m_Layer: 0
-  m_Name: WorldManager
+  m_Name: World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1032,14 +1032,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2056662319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77228dae94a8cfc42a55973f9377e242, type: 3}
+  m_Script: {fileID: 11500000, guid: 427b225844f96f24e8c3ac039b2c935c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   worldSize: {x: 11, y: 7}
-  tilePrefab: {fileID: 5702395845745189004, guid: 90cbbb866e4bc124a8262fa6961a101e,
+  tilePrefab: {fileID: 2642427864796175582, guid: 90cbbb866e4bc124a8262fa6961a101e,
     type: 3}
-  scoreText: {fileID: 684310093}
-  startDelay: 1.5
+  tiles: []
 --- !u!4 &2056662321
 Transform:
   m_ObjectHideFlags: 0

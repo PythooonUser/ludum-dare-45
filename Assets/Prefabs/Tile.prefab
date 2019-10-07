@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1454015462}
   - component: {fileID: 1454015463}
   m_Layer: 0
-  m_Name: Plus
+  m_Name: Plus Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1686110588272386307}
   - component: {fileID: 6253221537396310448}
-  - component: {fileID: 5702395845745189004}
+  - component: {fileID: 2642427864796175582}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -129,7 +129,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: -0.5, z: 0}
---- !u!114 &5702395845745189004
+--- !u!114 &2642427864796175582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,16 +138,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1686110588272386306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd22902c99dc46439d84f8a9d4ffa3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 40d8378309bd54b4eba8d25dbd5490c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   coordinates: {x: 0, y: 0}
-  colorDirt: {r: 0.4716981, g: 0.33656672, b: 0.08677466, a: 1}
-  colorGrass: {r: 0.39725327, g: 0.6226415, b: 0.11454255, a: 1}
   tileGraphics: {fileID: 8814564898173361649}
   plusGraphics: {fileID: 1454015461}
-  treeGraphics: {fileID: 5370109758474148199}
-  tileState: 0
+  colorDirt: {r: 0.4811321, g: 0.3180382, b: 0.13389997, a: 1}
+  colorGrass: {r: 0.39607847, g: 0.62352943, b: 0.1137255, a: 1}
+  neighbors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &680691176135673080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,12 +321,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40a47c5a74fab1f409f9fe116b6230af, type: 3}
---- !u!1 &5370109758474148199 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3861340983067893862, guid: 40a47c5a74fab1f409f9fe116b6230af,
-    type: 3}
-  m_PrefabInstance: {fileID: 9155901012536375553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8997399889052904308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 273986145501418101, guid: 40a47c5a74fab1f409f9fe116b6230af,
