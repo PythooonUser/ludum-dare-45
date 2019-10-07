@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class World : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class World : MonoBehaviour
     public Action<int> OnScoreChange = delegate { };
     [HideInInspector]
     public Tile[] tiles;
+
+    public Text scoreUI;
+    private int score;
+
+    public Text costsDirtUI;
+    public int CostsForDirt = 1;
 
     private void Awake()
     {
@@ -30,6 +37,8 @@ public class World : MonoBehaviour
     private void Start()
     {
         GenerateWorld();
+        UpdateScoreUI();
+        UpdateDirtCostsUI();
     }
 
     private void GenerateWorld()
@@ -70,10 +79,42 @@ public class World : MonoBehaviour
                     tiles[i - worldSize.x].SetNeighbor(TileDirection.North, tile);
                 }
 
+                tile.OnScoreGenerated += OnScoreGenerated;
+                tile.OnTileCreated += OnTileCreated;
+
                 tile.Init(TileState.Empty);
             }
         }
 
         centerTile.Init(TileState.Dirt);
+    }
+
+    private void OnScoreGenerated(int newScore)
+    {
+        score += newScore;
+        OnScoreChange(score);
+        UpdateScoreUI();
+    }
+
+    private void OnTileCreated()
+    {
+        CostsForDirt *= 2;
+        OnScoreChange(score);
+        UpdateDirtCostsUI();
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    private void UpdateScoreUI()
+    {
+        scoreUI.text = "Score: " + score.ToString();
+    }
+
+    private void UpdateDirtCostsUI()
+    {
+        costsDirtUI.text = "Costs: " + CostsForDirt.ToString();
     }
 }

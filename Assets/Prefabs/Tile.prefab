@@ -144,8 +144,13 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   tileGraphics: {fileID: 8814564898173361649}
   plusGraphics: {fileID: 1454015461}
+  treeGraphics: {fileID: 5370109758474148199}
   colorDirt: {r: 0.4811321, g: 0.3180382, b: 0.13389997, a: 1}
   colorGrass: {r: 0.39607847, g: 0.62352943, b: 0.1137255, a: 1}
+  scoreByDirt: 1
+  scoreByGrass: 4
+  costsForDirt: 2
+  costsForGrass: 10
   neighbors:
   - {fileID: 0}
   - {fileID: 0}
@@ -257,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 3861340983067893862, guid: 40a47c5a74fab1f409f9fe116b6230af,
         type: 3}
       propertyPath: m_Name
-      value: Tree
+      value: Tree Graphics
       objectReference: {fileID: 0}
     - target: {fileID: 3861340983067893862, guid: 40a47c5a74fab1f409f9fe116b6230af,
         type: 3}
@@ -321,6 +326,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40a47c5a74fab1f409f9fe116b6230af, type: 3}
+--- !u!1 &5370109758474148199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3861340983067893862, guid: 40a47c5a74fab1f409f9fe116b6230af,
+    type: 3}
+  m_PrefabInstance: {fileID: 9155901012536375553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8997399889052904308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 273986145501418101, guid: 40a47c5a74fab1f409f9fe116b6230af,
