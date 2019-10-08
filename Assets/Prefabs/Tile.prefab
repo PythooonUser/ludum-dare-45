@@ -148,8 +148,7 @@ MonoBehaviour:
   colorDirt: {r: 0.4811321, g: 0.3180382, b: 0.13389997, a: 1}
   colorGrass: {r: 0.39607847, g: 0.62352943, b: 0.1137255, a: 1}
   scoreByDirt: 1
-  scoreByGrass: 4
-  costsForDirt: 2
+  scoreByGrass: 2
   costsForGrass: 10
   neighbors:
   - {fileID: 0}

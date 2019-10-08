@@ -145,7 +145,7 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (state == TileState.Plus)
+        if (state == TileState.Plus && plusGraphics.activeSelf)
         {
             UpdateState(TileState.Dirt);
         }

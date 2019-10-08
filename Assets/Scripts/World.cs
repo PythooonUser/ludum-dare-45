@@ -37,6 +37,7 @@ public class World : MonoBehaviour
     private void Start()
     {
         GenerateWorld();
+        score = 0;
         UpdateScoreUI();
         UpdateDirtCostsUI();
     }
@@ -98,8 +99,10 @@ public class World : MonoBehaviour
 
     private void OnTileCreated()
     {
-        CostsForDirt *= 2;
+        score -= CostsForDirt;
+        CostsForDirt += 4;
         OnScoreChange(score);
+        UpdateScoreUI();
         UpdateDirtCostsUI();
     }
 
