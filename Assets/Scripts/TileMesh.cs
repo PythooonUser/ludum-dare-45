@@ -54,14 +54,18 @@ public class TileMesh
     {
         TileCoordinates coordinates = tile.coordinates;
         float height = tile.height;
+
         float distanceToGroundLevel = groundLevel - height;
         Color c1 = new Color(0.624625f, 0.6792453f, 0.1057316f, 1f);
         Color c2 = new Color(0.745283f, 0.7306919f, 0.1792898f, 1f);
 
-        Vector3 v1 = new Vector3(coordinates.x - tileSize.x * 0.5f + tileInset.x, height, coordinates.y - tileSize.y * 0.5f + tileInset.y);
-        Vector3 v2 = new Vector3(coordinates.x + tileSize.x * 0.5f - tileInset.x, height, coordinates.y - tileSize.y * 0.5f + tileInset.y);
-        Vector3 v3 = new Vector3(coordinates.x - tileSize.x * 0.5f + tileInset.x, height, coordinates.y + tileSize.y * 0.5f - tileInset.y);
-        Vector3 v4 = new Vector3(coordinates.x + tileSize.x * 0.5f - tileInset.y, height, coordinates.y + tileSize.y * 0.5f - tileInset.y);
+        float tileSizeXHalf = tileSize.x * 0.5f;
+        float tileSizeYHalf = tileSize.y * 0.5f;
+
+        Vector3 v1 = new Vector3(coordinates.x * tileSize.x - tileSizeXHalf + tileInset.x, height, coordinates.y * tileSize.y - tileSizeYHalf + tileInset.y);
+        Vector3 v2 = new Vector3(coordinates.x * tileSize.x + tileSizeXHalf - tileInset.x, height, coordinates.y * tileSize.y - tileSizeYHalf + tileInset.y);
+        Vector3 v3 = new Vector3(coordinates.x * tileSize.x - tileSizeXHalf + tileInset.x, height, coordinates.y * tileSize.y + tileSizeYHalf - tileInset.y);
+        Vector3 v4 = new Vector3(coordinates.x * tileSize.x + tileSizeXHalf - tileInset.y, height, coordinates.y * tileSize.y + tileSizeYHalf - tileInset.y);
 
         // TOP
         AddQuad(v1, v2, v3, v4);
