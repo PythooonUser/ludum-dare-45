@@ -17,10 +17,12 @@ public class WorldGenerator : MonoBehaviour
 
     private Tile[,] tiles;
 
-    public void GenerateWorld()
+    public Tile[,] GenerateWorld()
     {
         GenerateTileMap();
         GenerateTileMesh();
+
+        return tiles;
     }
 
     private void GenerateTileMap()

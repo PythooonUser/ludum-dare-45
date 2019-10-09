@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        worldGenerator.GenerateWorld();
+        Tile[,] tiles = worldGenerator.GenerateWorld();
+        worldManager.tiles = tiles;
     }
 
     private void Update()

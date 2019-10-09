@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 746149641}
   - component: {fileID: 746149640}
   - component: {fileID: 746149639}
+  - component: {fileID: 746149642}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -297,6 +298,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &746149642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746149638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9f4d3d824b9e8419cff3f5d7657934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldManager: {fileID: 1207290798}
 --- !u!1 &1207290796
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9455e54ead9f9db4e809d7e60b5f1891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileMeshGenerator: {fileID: 1207290800}
 --- !u!114 &1207290799
 MonoBehaviour:
   m_ObjectHideFlags: 0
