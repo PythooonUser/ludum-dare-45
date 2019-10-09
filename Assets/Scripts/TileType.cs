@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TileState
+public enum TileType
 {
-    Uninitialized,
     Empty,
-    Plus,
     Dirt,
-    Grass,
-    Tree
+    Grass
 }

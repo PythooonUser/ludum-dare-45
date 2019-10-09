@@ -4,5 +4,8 @@ using UnityEngine;
 
 public enum TileDirection
 {
-    North, East, South, West
+    North,
+    East,
+    South,
+    West
 }
