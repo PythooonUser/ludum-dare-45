@@ -15,4 +15,12 @@ public class TileMeshGenerator : MonoBehaviour
     {
         return tileMesh.GenerateMesh(tiles, tileSize, tileInset, groundLevel);
     }
+
+    private void Update()
+    {
+        // TODO: Loop through tiles and apply animations.
+        // tile.animation.Tick();
+
+        // TODO: Create a dynamic and a static mesh.
+    }
 }

@@ -48,6 +48,8 @@ public class WorldGenerator : MonoBehaviour
 
         float height = Random.Range(-0.25f, 0.25f) - 0.25f * Mathf.Sqrt(Mathf.Pow(x - (worldSize.x - 1) * 0.5f, 2f) + Mathf.Pow(y - (worldSize.y - 1) * 0.5f, 2f));
         tile.height = height;
+
+        tile.isActive = Random.Range(0, 2) > 0 ? true : false;
     }
 
     private void GenerateTileMesh()

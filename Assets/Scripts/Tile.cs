@@ -7,4 +7,5 @@ public class Tile
     public TileCoordinates coordinates;
     public float height;
     public bool isSelected;
+    public bool isActive;
 }
