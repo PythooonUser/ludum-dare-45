@@ -54,10 +54,11 @@ public class TileMesh
     {
         TileCoordinates coordinates = tile.coordinates;
         float height = tile.height;
+        bool isSelected = tile.isSelected;
 
         float distanceToGroundLevel = groundLevel - height;
-        Color c1 = new Color(0.624625f, 0.6792453f, 0.1057316f, 1f);
-        Color c2 = new Color(0.745283f, 0.7306919f, 0.1792898f, 1f);
+        Color c1 = isSelected ? Color.white : new Color(0.624625f, 0.6792453f, 0.1057316f, 1f);
+        Color c2 = isSelected ? Color.white : new Color(0.745283f, 0.7306919f, 0.1792898f, 1f);
 
         float tileSizeXHalf = tileSize.x * 0.5f;
         float tileSizeYHalf = tileSize.y * 0.5f;

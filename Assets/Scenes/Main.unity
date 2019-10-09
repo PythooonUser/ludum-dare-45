@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMeshGenerator: {fileID: 1207290800}
+  cameraController: {fileID: 746149642}
 --- !u!114 &1207290799
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,9 +6,16 @@ public class WorldManager : MonoBehaviour
 {
     [Header("References")]
     public TileMeshGenerator tileMeshGenerator;
+    public CameraController cameraController;
 
     [HideInInspector]
     public Tile[,] tiles;
+
+    private void Start()
+    {
+        cameraController.OnTileSelected += OnTileSelected;
+        cameraController.OnTileDeselected += OnTileDeselected;
+    }
 
     public Tile GetTileByWorldPosition(Vector3 position)
     {
@@ -41,5 +48,26 @@ public class WorldManager : MonoBehaviour
         }
 
         return tiles[iX - 1, iZ - 1];
+    }
+
+    private void OnTileSelected(Tile tile)
+    {
+        tile.isSelected = true;
+        RedrawMesh();
+    }
+
+    private void OnTileDeselected(Tile tile)
+    {
+        tile.isSelected = false;
+        RedrawMesh();
+    }
+
+    private void RedrawMesh()
+    {
+        Mesh mesh = tileMeshGenerator.GenerateMesh(tiles);
+
+        Transform tileMesh = transform.GetChild(0);
+        tileMesh.GetComponent<MeshFilter>().mesh = mesh;
+        tileMesh.GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 }
