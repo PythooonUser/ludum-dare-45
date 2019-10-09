@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour
 {
     [Header("References")]
     public TileMeshGenerator tileMeshGenerator;
     public CameraController cameraController;
+    public Text selectedTileCoordinatesText;
 
     [HideInInspector]
     public Tile[,] tiles;
@@ -15,6 +17,8 @@ public class WorldManager : MonoBehaviour
     {
         cameraController.OnTileSelected += OnTileSelected;
         cameraController.OnTileDeselected += OnTileDeselected;
+
+        selectedTileCoordinatesText.text = "";
     }
 
     public Tile GetTileByWorldPosition(Vector3 position)
@@ -54,12 +58,14 @@ public class WorldManager : MonoBehaviour
     {
         tile.isSelected = true;
         RedrawMesh();
+        selectedTileCoordinatesText.text = tile.coordinates.ToString();
     }
 
     private void OnTileDeselected(Tile tile)
     {
         tile.isSelected = false;
         RedrawMesh();
+        selectedTileCoordinatesText.text = "";
     }
 
     private void RedrawMesh()
