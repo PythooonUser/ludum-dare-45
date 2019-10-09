@@ -54,5 +54,6 @@ public class WorldGenerator : MonoBehaviour
 
         Transform tileMesh = Instantiate(tileMeshPrefab, Vector3.zero, Quaternion.identity, worldParent);
         tileMesh.GetComponent<MeshFilter>().mesh = mesh;
+        tileMesh.GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 }
