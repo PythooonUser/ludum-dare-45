@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class WorldManager : MonoBehaviour
     {
         cameraController.OnTileSelected += OnTileSelected;
         cameraController.OnTileDeselected += OnTileDeselected;
+        cameraController.OnTileClick += OnTileClick;
 
         selectedTileCoordinatesText.text = "";
     }
@@ -68,10 +70,27 @@ public class WorldManager : MonoBehaviour
         selectedTileCoordinatesText.text = "";
     }
 
+    private void OnTileClick(Tile tile)
+    {
+        if (tile.animation != null && tile.animation.isRunning)
+        {
+            return;
+        }
+
+        tile.animation = new FallDownTileAnimation(tile);
+    }
+
     private void RedrawMesh()
     {
         Mesh mesh = tileMeshGenerator.GenerateMesh(tiles);
 
+        Transform tileMesh = transform.GetChild(0);
+        tileMesh.GetComponent<MeshFilter>().mesh = mesh;
+        tileMesh.GetComponent<MeshCollider>().sharedMesh = mesh;
+    }
+
+    public void UpdateMesh(Mesh mesh)
+    {
         Transform tileMesh = transform.GetChild(0);
         tileMesh.GetComponent<MeshFilter>().mesh = mesh;
         tileMesh.GetComponent<MeshCollider>().sharedMesh = mesh;

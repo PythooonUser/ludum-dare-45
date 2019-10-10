@@ -7,20 +7,40 @@ public class TileMeshGenerator : MonoBehaviour
     [Header("Tile Mesh Parameters")]
     public Vector2 tileSize = Vector3.one;
     [SerializeField] private Vector2 tileInset = new Vector2(0.15f, 0.15f);
-    [SerializeField] private float groundLevel = -6f;
+
+    [Header("References")]
+    [SerializeField] private WorldManager worldManager;
 
     private TileMesh tileMesh = new TileMesh();
 
     public Mesh GenerateMesh(Tile[,] tiles)
     {
-        return tileMesh.GenerateMesh(tiles, tileSize, tileInset, groundLevel);
+        return tileMesh.GenerateMesh(tiles, tileSize, tileInset);
     }
 
     private void Update()
     {
-        // TODO: Loop through tiles and apply animations.
-        // tile.animation.Tick();
+        Tile[,] tiles = worldManager.tiles;
+        bool needsUpdating = false;
 
-        // TODO: Create a dynamic and a static mesh.
+        for (int y = 0; y < tiles.GetLength(1); y++)
+        {
+            for (int x = 0; x < tiles.GetLength(0); x++)
+            {
+                Tile tile = tiles[x, y];
+
+                if (tile.animation != null && tile.animation.isRunning)
+                {
+                    tile.animation.Tick(Time.deltaTime);
+                    needsUpdating = true;
+                }
+            }
+        }
+
+        if (needsUpdating)
+        {
+            Mesh mesh = GenerateMesh(tiles);
+            worldManager.UpdateMesh(mesh);
+        }
     }
 }

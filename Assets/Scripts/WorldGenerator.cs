@@ -61,6 +61,11 @@ public class WorldGenerator : MonoBehaviour
             tile.SetNeighbor(TileDirection.South, tiles[x, y - 1]);
             tiles[x, y - 1].SetNeighbor(TileDirection.North, tile);
         }
+
+        if (Random.Range(0, 2) > 0)
+        {
+            tile.animation = new RiseUpTileAnimation(tile);
+        }
     }
 
     private void GenerateTileMesh()

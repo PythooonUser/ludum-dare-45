@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
 
     public Action<Tile> OnTileSelected = delegate { };
     public Action<Tile> OnTileDeselected = delegate { };
+    public Action<Tile> OnTileClick = delegate { };
 
     private new Camera camera;
     private Tile selectedTile;
@@ -45,6 +46,11 @@ public class CameraController : MonoBehaviour
                     DeselectTile();
                     SelectTile(tile);
                 }
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                OnTileClick(tile);
             }
         }
         else

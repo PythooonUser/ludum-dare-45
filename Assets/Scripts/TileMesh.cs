@@ -10,9 +10,8 @@ public class TileMesh
 
     private Vector2 tileSize;
     private Vector2 tileInset;
-    private float groundLevel;
 
-    public Mesh GenerateMesh(Tile[,] tiles, Vector2 tileSize, Vector2 tileInset, float groundLevel)
+    public Mesh GenerateMesh(Tile[,] tiles, Vector2 tileSize, Vector2 tileInset)
     {
         vertices.Clear();
         triangles.Clear();
@@ -20,7 +19,6 @@ public class TileMesh
 
         this.tileSize = tileSize;
         this.tileInset = tileInset;
-        this.groundLevel = groundLevel;
 
         Mesh mesh = new Mesh();
         mesh.name = "Generate tile mesh";
@@ -54,8 +52,7 @@ public class TileMesh
     {
         TileCoordinates coordinates = tile.coordinates;
         float height = tile.height;
-
-        float distanceToGroundLevel = groundLevel - height;
+        float tileHeight = 4f;
 
         float tileSizeXHalf = tileSize.x * 0.5f;
         float tileSizeYHalf = tileSize.y * 0.5f;
@@ -74,19 +71,19 @@ public class TileMesh
         AddQuadColors(c1);
 
         // FRONT
-        AddQuad(v1 + Vector3.up * distanceToGroundLevel, v2 + Vector3.up * distanceToGroundLevel, v1, v2);
+        AddQuad(v1 + Vector3.down * tileHeight, v2 + Vector3.down * tileHeight, v1, v2);
         AddQuadColors(c2, c2, c1, c1);
 
         // LEFT
-        AddQuad(v3 + Vector3.up * distanceToGroundLevel, v1 + Vector3.up * distanceToGroundLevel, v3, v1);
+        AddQuad(v3 + Vector3.down * tileHeight, v1 + Vector3.down * tileHeight, v3, v1);
         AddQuadColors(c2, c2, c1, c1);
 
         // BACK
-        AddQuad(v4 + Vector3.up * distanceToGroundLevel, v3 + Vector3.up * distanceToGroundLevel, v4, v3);
+        AddQuad(v4 + Vector3.down * tileHeight, v3 + Vector3.down * tileHeight, v4, v3);
         AddQuadColors(c2, c2, c1, c1);
 
         // RIGHT
-        AddQuad(v2 + Vector3.up * distanceToGroundLevel, v4 + Vector3.up * distanceToGroundLevel, v2, v4);
+        AddQuad(v2 + Vector3.down * tileHeight, v4 + Vector3.down * tileHeight, v2, v4);
         AddQuadColors(c2, c2, c1, c1);
     }
 
