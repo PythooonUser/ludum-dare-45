@@ -62,8 +62,9 @@ public class WorldGenerator : MonoBehaviour
             tiles[x, y - 1].SetNeighbor(TileDirection.North, tile);
         }
 
-        if (Random.Range(0, 2) > 0)
+        if (x == (worldSize.x - 1) / 2f && y == (worldSize.y - 1) / 2f)
         {
+            tile.isActive = true;
             tile.animation = new RiseUpTileAnimation(tile);
         }
     }

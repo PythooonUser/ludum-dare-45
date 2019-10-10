@@ -7,6 +7,7 @@ public class TileAnimation
 {
     protected Tile tile;
     public bool isRunning;
+    public Action<TileAnimation> OnAnimationFinished = delegate { };
 
     protected TileAnimation(Tile tile)
     {

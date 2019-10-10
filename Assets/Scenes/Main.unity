@@ -433,6 +433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9455e54ead9f9db4e809d7e60b5f1891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileCreatorPrefab: {fileID: 7716046137346635824, guid: a619bd1a75f458e42af42751003f3153,
+    type: 3}
   tileMeshGenerator: {fileID: 1207290800}
   cameraController: {fileID: 746149642}
   selectedTileCoordinatesText: {fileID: 1150228451}
@@ -467,7 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSize: {x: 1, y: 1}
   tileInset: {x: 0.1, y: 0.1}
-  groundLevel: -4
+  worldManager: {fileID: 1207290798}
 --- !u!1 &1318182048
 GameObject:
   m_ObjectHideFlags: 0

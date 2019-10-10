@@ -7,6 +7,7 @@ public class Tile
     public TileCoordinates coordinates;
     private Tile[] neighbors = new Tile[4];
     public TileAnimation animation;
+    public bool isActive = false;
 
     public float height;
     public bool isSelected;

@@ -43,7 +43,10 @@ public class TileMesh
         {
             for (int x = 0; x < width; x++)
             {
-                Triangulate(tiles[x, y]);
+                if (tiles[x, y].isActive)
+                {
+                    Triangulate(tiles[x, y]);
+                }
             }
         }
     }

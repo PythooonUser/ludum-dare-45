@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     {
         Tile[,] tiles = worldGenerator.GenerateWorld();
         worldManager.tiles = tiles;
+        worldManager.UpdateWorld();
     }
 
     private void Update()

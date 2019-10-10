@@ -8,6 +8,7 @@ public class RiseUpTileAnimation : TileAnimation
     private float startingHeight;
     private float animationDuration;
     private float timeSinceAnimationStart;
+    private bool hasFinished = false;
 
     public RiseUpTileAnimation(Tile tile) : base(tile)
     {
@@ -30,6 +31,16 @@ public class RiseUpTileAnimation : TileAnimation
             }
 
             tile.height = Mathf.Lerp(startingHeight, finalHeight, timeSinceAnimationStart / animationDuration);
+        }
+        else
+        {
+            Debug.Log("Animation stopped!");
+
+            if (!hasFinished)
+            {
+                hasFinished = true;
+                OnAnimationFinished(this);
+            }
         }
     }
 }
