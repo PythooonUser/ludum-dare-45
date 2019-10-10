@@ -45,10 +45,7 @@ public class TileMesh
         {
             for (int x = 0; x < width; x++)
             {
-                if (tiles[x, y].isActive)
-                {
-                    Triangulate(tiles[x, y]);
-                }
+                Triangulate(tiles[x, y]);
             }
         }
     }
@@ -57,11 +54,8 @@ public class TileMesh
     {
         TileCoordinates coordinates = tile.coordinates;
         float height = tile.height;
-        bool isSelected = tile.isSelected;
 
         float distanceToGroundLevel = groundLevel - height;
-        Color c1 = isSelected ? Color.white : new Color(0.624625f, 0.6792453f, 0.1057316f, 1f);
-        Color c2 = isSelected ? Color.white : new Color(0.745283f, 0.7306919f, 0.1792898f, 1f);
 
         float tileSizeXHalf = tileSize.x * 0.5f;
         float tileSizeYHalf = tileSize.y * 0.5f;
@@ -70,6 +64,10 @@ public class TileMesh
         Vector3 v2 = new Vector3(coordinates.x * tileSize.x + tileSizeXHalf - tileInset.x, height, coordinates.y * tileSize.y - tileSizeYHalf + tileInset.y);
         Vector3 v3 = new Vector3(coordinates.x * tileSize.x - tileSizeXHalf + tileInset.x, height, coordinates.y * tileSize.y + tileSizeYHalf - tileInset.y);
         Vector3 v4 = new Vector3(coordinates.x * tileSize.x + tileSizeXHalf - tileInset.y, height, coordinates.y * tileSize.y + tileSizeYHalf - tileInset.y);
+
+        Color[] colors = GetTileColors(tile);
+        Color c1 = colors[0];
+        Color c2 = colors[1];
 
         // TOP
         AddQuad(v1, v2, v3, v4);
@@ -135,5 +133,30 @@ public class TileMesh
         colors.Add(c1);
         colors.Add(c1);
         colors.Add(c1);
+    }
+
+    private Color[] GetTileColors(Tile tile)
+    {
+        Color[] colors = {
+            new Color(0.624625f, 0.6792453f, 0.1057316f, 1f),
+            new Color(0.745283f, 0.7306919f, 0.1792898f, 1f)
+        };
+
+        bool isSelected = tile.isSelected;
+        bool isNeighborSelected = false;
+
+        foreach (Tile neighbor in tile.GetNeighbors())
+        {
+            if (neighbor != null && neighbor.isSelected)
+            {
+                isNeighborSelected = true;
+                break;
+            }
+        }
+
+        colors[0] = isSelected ? Color.white : (isNeighborSelected ? Color.yellow : colors[0]);
+        colors[1] = isSelected ? Color.white : (isNeighborSelected ? Color.yellow : colors[1]);
+
+        return colors;
     }
 }

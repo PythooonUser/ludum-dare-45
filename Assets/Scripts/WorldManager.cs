@@ -19,26 +19,6 @@ public class WorldManager : MonoBehaviour
         cameraController.OnTileDeselected += OnTileDeselected;
 
         selectedTileCoordinatesText.text = "";
-
-        StartCoroutine(AnimateTileMap());
-    }
-
-    private IEnumerator AnimateTileMap()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(0.5f);
-
-            for (int y = 0; y < tiles.GetLength(1); y++)
-            {
-                for (int x = 0; x < tiles.GetLength(0); x++)
-                {
-                    tiles[x, y].isActive = Random.Range(0, 2) > 0 ? true : false;
-                }
-            }
-
-            RedrawMesh();
-        }
     }
 
     public Tile GetTileByWorldPosition(Vector3 position)

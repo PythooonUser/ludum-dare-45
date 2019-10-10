@@ -49,7 +49,18 @@ public class WorldGenerator : MonoBehaviour
         float height = Random.Range(-0.25f, 0.25f) - 0.25f * Mathf.Sqrt(Mathf.Pow(x - (worldSize.x - 1) * 0.5f, 2f) + Mathf.Pow(y - (worldSize.y - 1) * 0.5f, 2f));
         tile.height = height;
 
-        tile.isActive = Random.Range(0, 2) > 0 ? true : false;
+        // Set neighbors
+        if (x > 0)
+        {
+            tile.SetNeighbor(TileDirection.West, tiles[x - 1, y]);
+            tiles[x - 1, y].SetNeighbor(TileDirection.East, tile);
+        }
+
+        if (y > 0)
+        {
+            tile.SetNeighbor(TileDirection.South, tiles[x, y - 1]);
+            tiles[x, y - 1].SetNeighbor(TileDirection.North, tile);
+        }
     }
 
     private void GenerateTileMesh()
