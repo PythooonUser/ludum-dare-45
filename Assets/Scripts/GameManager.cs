@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private void Update()
+    [Header("Key Bindings")]
+    public KeyCode pauseMenuKey = KeyCode.Escape;
+
+    [Header("References")]
+    public WorldManager worldManager;
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        worldManager.Init();
     }
 }
