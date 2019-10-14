@@ -6,18 +6,15 @@ public class TileController : MonoBehaviour
 {
     [Header("Tile Parameters")]
     public Vector2Int coordinates;
-    public TileGroundType groundType = TileGroundType.None;
+    public TileGroundType groundType;
     public List<TileGroundColor> groundColors = new List<TileGroundColor>();
     public float hoverEffectStrength = 0.15f;
+    private bool hasActiveNeighbor;
 
     [Header("References")]
     public GameObject tileGraphics;
     public GameObject plusGraphics;
-
-    private void Start()
-    {
-        SetGroundType(groundType);
-    }
+    private TileController[] neighbors = new TileController[4];
 
     private void OnMouseEnter()
     {
@@ -29,14 +26,31 @@ public class TileController : MonoBehaviour
         DeactivateHoverEffect();
     }
 
-    private void OnMouseOver() { }
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (groundType == TileGroundType.Plus)
+            {
+                SetGroundType(TileGroundType.Dirt);
+            }
+            else if (groundType == TileGroundType.Dirt)
+            {
+                SetGroundType(TileGroundType.Grass);
+            }
+        }
+    }
 
     public void SetGroundType(TileGroundType groundType)
     {
-        // if (this.groundType == groundType) { return; }
         this.groundType = groundType;
 
         if (groundType == TileGroundType.None)
+        {
+            tileGraphics.SetActive(false);
+            plusGraphics.SetActive(false);
+        }
+        else if (groundType == TileGroundType.Plus)
         {
             tileGraphics.SetActive(false);
             plusGraphics.SetActive(true);
@@ -46,6 +60,7 @@ public class TileController : MonoBehaviour
             tileGraphics.SetActive(true);
             tileGraphics.GetComponent<Renderer>().material.color = GetTileGroundColor(groundType);
             plusGraphics.SetActive(false);
+            UpdateNeighbors();
         }
         else if (groundType == TileGroundType.Grass)
         {
@@ -81,5 +96,34 @@ public class TileController : MonoBehaviour
     private void DeactivateHoverEffect()
     {
         transform.localScale = Vector3.one;
+    }
+
+    public void SetNeighbor(TileDirection direction, TileController neighbor)
+    {
+        neighbors[(int)direction] = neighbor;
+    }
+
+    public TileController GetNeighbor(TileDirection direction)
+    {
+        return neighbors[(int)direction];
+    }
+
+    public TileController[] GetNeighbors()
+    {
+        return neighbors;
+    }
+
+    private void UpdateNeighbors()
+    {
+        foreach (TileController neighbor in neighbors)
+        {
+            if (neighbor != null)
+            {
+                if (neighbor.groundType == TileGroundType.None)
+                {
+                    neighbor.SetGroundType(TileGroundType.Plus);
+                }
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public enum TileGroundType
 {
     None,
+    Plus,
     Dirt,
     Grass
 }

@@ -49,9 +49,9 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   groundType: 0
   groundColors:
-  - groundType: 1
-    color: {r: 0.5566038, g: 0.4251131, b: 0.2966803, a: 1}
   - groundType: 2
+    color: {r: 0.5566038, g: 0.4251131, b: 0.2966803, a: 1}
+  - groundType: 3
     color: {r: 0.67432284, g: 0.754717, b: 0.11747954, a: 1}
   hoverEffectStrength: 0.15
   tileGraphics: {fileID: 2451106503205554056}
@@ -80,6 +80,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plus Graphics
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00b378f40ace98c4fb38e777cacdd2ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 00b378f40ace98c4fb38e777cacdd2ac,
         type: 3}
@@ -134,6 +139,16 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 00b378f40ace98c4fb38e777cacdd2ac,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 00b378f40ace98c4fb38e777cacdd2ac,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 00b378f40ace98c4fb38e777cacdd2ac,
+        type: 3}
+      propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 00b378f40ace98c4fb38e777cacdd2ac,

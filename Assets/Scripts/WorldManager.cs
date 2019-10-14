@@ -27,9 +27,24 @@ public class WorldManager : MonoBehaviour
             {
                 Vector3 position = new Vector3(x, 0f, y);
                 TileController tile = tiles[x, y] = Instantiate(tilePrefab, position, Quaternion.identity, transform);
+                tile.SetGroundType(TileGroundType.None);
 
-                tile.SetGroundType((TileGroundType)Random.Range(0, 3));
+                // Set neighbors
+                if (x > 0)
+                {
+                    tile.SetNeighbor(TileDirection.West, tiles[x - 1, y]);
+                    tiles[x - 1, y].SetNeighbor(TileDirection.East, tile);
+                }
+
+                if (y > 0)
+                {
+                    tile.SetNeighbor(TileDirection.South, tiles[x, y - 1]);
+                    tiles[x, y - 1].SetNeighbor(TileDirection.North, tile);
+                }
             }
         }
+
+        // Activate center tile at start
+        tiles[(worldSize.x - 1) / 2, (worldSize.y - 1) / 2].SetGroundType(TileGroundType.Dirt);
     }
 }
